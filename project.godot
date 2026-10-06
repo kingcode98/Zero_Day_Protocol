@@ -1,0 +1,19 @@
+[application]
+
+config/name = "Zero-Day: Protocol"
+run/main_scene = "res://scenes/Main.tscn"
+
+[rendering]
+
+renderer/rendering_method = "renderer_rendering_method_compatibility"
+
+[input]
+
+ui_left = [ Key.KEY_LEFT, KEY.KEY_A, JOY_BUTTON_2, JOY_BUTTON_4, JOY_AXIS_0_NEGATIVE ]
+ui_right = [ Key.KEY_RIGHT, KEY.KEY_D, JOY_BUTTON_3, JOY_BUTTON_5, JOY_AXIS_0_POSITIVE ]
+ui_up = [ Key.KEY_UP, KEY.KEY_W, JOY_BUTTON_0, JOY_BUTTON_6, JOY_AXIS_1_NEGATIVE ]
+ui_down = [ Key.KEY_DOWN, KEY.KEY_S, JOY_BUTTON_1, JOY_BUTTON_7, JOY_AXIS_1_POSITIVE ]
+
+[debug]
+
+script/create_debug_stackframes = true
