@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://miningrig"]
+
+[ext_resource type="Script" uid="uid://interactable" path="res://scripts/interactable.gd" id="1_INTERACTABLE"]
+[ext_resource type="Script" uid="uid://miningscript" path="res://scripts/mining_rig.gd" id="1_MININGSCRIPT"]
+
+[node name="MiningRig" type="Area2D"]
+    script = ExtResource("1_MININGSCRIPT")
+
+    [node name="Interaction" type="Interactable"]
+        name = "Interaction"
+        interaction_radius = 35
+        interaction_text = "Mine"
+
+    [node name="Sprite2D" type="Sprite2D"]
+        name = "RigSprite"
+        texture = "res://assets/sprites/tileset.png"  // Placeholder - should be mining rig sprite
+        region_enabled = true
+        region_rect = Rect2(64, 32, 32, 32)  // Assuming a tile in the tileset
+        scale = Vector2(1.5, 1.5)
+
+    [node name="CollisionShape2D" type="CollisionShape2D"]
+        name = "InteractionCollision"
+        shape = CircleShape2D
+        radius = 35
+
+    [node name="MiningTimer" type="Timer"]

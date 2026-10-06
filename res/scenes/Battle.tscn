@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bbbbbb"]
+
+[ext_resource type="Script" uid="uid://cccccc" path="res://scripts/battle_manager.gd" id="1_BATTLEMGR"]
+[ext_resource type="Script" uid="uid://dddddd" path="res://scripts/hacking_device.gd" id="1_HACKDEV"]
+[ext_resource type="Script" uid="uid://eeeeee" path="res://scripts/exploit.gd" id="1_EXPLOIT"]
+
+[node name="Battle" type="Node"]
+
+[node name="BattleManager" type="BattleManager" name="BattleManager"]
+
+[node name="Battlefield" type="Node2D"]
+    [node name="Grid" type="Node2D"]
+        name = "Grid"
+        [node name="PlayerSide" type="Node2D"]
+            name = "PlayerSide"
+        [node name="EnemySide" type="Node2D"]
+            name = "EnemySide"
+
+    [node name="BattleUI" type="CanvasLayer"]
+        [node name="TurnIndicator" type="Label"]
+            name = "TurnIndicator"
+            text = "Player Turn"
+            align = 2
+            anchor_left = 0.5
+            anchor_top = 0.0
+            anchor_right = 0.5
+            margin_top = -50
+        [node name="DeviceInfoPanel" type="PanelContainer"]
+            anchor_left = 0.0
+            anchor_top = 1.0
+            margin_bottom = -200
+            margin_left = 10
+            margin_right = 10
+            [node name="VBoxContainer" type="VBoxContainer"]
+                [node name="ActiveDeviceLabel" type="Label"]
+                    name = "ActiveDeviceLabel"
+                    text = "Active Device: None"
+                [node name="DeviceStatsLabel" type="Label"]
+                    name = "DeviceStatsLabel"
+                    text = "BW: 0/0 | Charges: 0/0"
+                [node name="OpSecLabel" type="Label"]
+                    name = "OpSecLabel"
+                    text = "OpSec: 0/100"
+        [node name="ActionLog" type="TextEdit"]
+            name = "ActionLog"
+            readonly = true
+            wrap_enabled = true
+            anchor_left = 0.0
+            anchor_top = 0.0
+            anchor_right = 1.0
+            anchor_bottom = 1.0
+            margin_left = 10
+            margin_top = 10
+            margin_right = 10
+            margin_bottom = 60

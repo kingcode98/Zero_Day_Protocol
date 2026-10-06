@@ -1,0 +1,95 @@
+[gd_resource type="HackingDevice" load_steps=2 format=3 uid="uid://hackrfone"]
+
+ext_resource "res://scripts/exploit.gd" as Exploit
+
+# Device Stats from GDD - HackRF One (Specialist)
+device_name = "HackRF One"
+specialty = "Specialist"
+
+processing_speed = 14  # Specialist - good speed
+bandwidth_capacity = 85
+exploit_success_rate = 68
+signal_strength = 3  # Excellent range
+durability = 6  # Lower durability as specialist
+level = 1
+
+# Exploits (Abilities) - HackRF One move pool from GDD
+exploits = [
+    SubResource(1),  # Spectrum Sweep
+    SubResource(2),  # Replay Attack
+    SubResource(3),  # Jamming Pulse
+    SubResource(4),  # Frequency Hop
+    SubResource(5),  # SDRL Burst
+]
+
+[sub_resource type="Exploit" id=1]
+name = "Spectrum Sweep"
+description = "Scan large area for hidden nodes/traps"
+bw_cost = 10
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 95
+range = 4  # Large area scan
+area_of_effect = []  # Affects large radius
+cooldown = 3
+effect_type = "reveal"  # Reveals hidden nodes/traps
+effect_value = 1.0
+effect_duration = 1  # Lasts for enemy's next turn
+is_passive = false  # Active scan
+
+[sub_resource type="Exploit" id=2]
+name = "Replay Attack"
+description = "Copy and reuse last enemy ability used"
+bw_cost = 20
+exploit_chiyet_cost = 1  # Limited use
+power = 0
+accuracy = 100  # Perfect copy
+range = 2
+area_of_effect = []
+cooldown = 0
+effect_type = "copy"  # Copies last enemy ability
+effect_value = 1.0
+effect_duration = 0
+# Note: Would need game logic to track last enemy ability
+
+[sub_resource type="Exploit" id=3]
+name = "Jamming Pulse"
+description = "Silence all enemy abilities in radius for 1 turn"
+bw_cost = 25
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 80
+range = 3
+area_of_effect = []  # Affects all enemies in range
+cooldown = 4
+effect_type = "silence"  # Prevents enemy actions
+effect_value = 1.0
+effect_duration = 1
+
+[sub_resource type="Exploit" id=4]
+name = "Frequency Hop"
+description = "Become untargetable for 1 turn"
+bw_cost = 15
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 90
+range = 1
+area_of_effect = []
+cooldown = 2
+effect_type = "buff"  # Untargetable
+effect_value = 1.0
+effect_duration = 1
+
+[sub_resource type="Exploit" id=5]
+name = "SDRL Burst"
+description = "High-damage single-target exploit"
+bw_cost = 35
+exploit_chiyet_cost = 2  # High cost, limited use
+power = 25
+accuracy = 70
+range = 2
+area_of_effect = []
+cooldown = 0
+effect_type = "damage"
+effect_value = 25.0
+effect_duration = 0

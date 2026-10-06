@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://huuuud"]
+
+[ext_resource type="Script" uid="uid://hudscript" path="res://scripts/hud.gd" id="1_HUDSCRIPT"]
+
+[node name="HUD" type="CanvasLayer"]
+    [node name="MarginContainer" type="MarginContainer"]
+        margin_left = 10
+        margin_top = 10
+        margin_right = 10
+        margin_bottom = 10
+        [node name="VBoxContainer" type="VBoxContainer"]
+            [node name="OpSecFrame" type="FrameContainer"]
+                [node name="OpSecLabel" type="Label"]
+                    name = "OpSecLabel"
+                    text = "OpSec: 100/100"
+                    align = 0
+            [node name="CredFrame" type="FrameContainer"]
+                [node name="CredLabel" type="Label"]
+                    name = "CredLabel"
+                    text = "Cred: 0"
+                    align = 0
+            [node name="StaminaFrame" type="FrameContainer"]
+                [node name="StaminaLabel" type="Label"]
+                    name = "StaminaLabel"
+                    text = "Stamina: 100/100"
+                    align = 0
+            [node name="CurrencyFrame" type="FrameContainer"]
+                [node name="CurrencyHBox" type="HBoxContainer"]
+                    [node name="SECLabel" type="Label"]
+                        name = "SECLabel"
+                        text = "SEC: 0.0"
+                    [node name="ANMLabel" type="Label"]
+                        name = "ANMLabel"
+                        text = "ANM: 0.0"
+                    [node name="DOGELabel" type="Label"]
+                        name = "DOGELabel"
+                        text = "DOGE: 0.0"
+                    [node name="ZDLabel" type="Label"]
+                        name = "ZDLabel"
+                        text = "ZD: 0.0"
+            [node name="MinimapFrame" type="FrameContainer"]
+                [node name="Minimap" type="TextureRect"]
+                    name = "Minimap"
+                    expand = true
+                    stretch_mode = 2
+                    anchors_preset = 6  // Full Rect
+
+[node name="CombatUI" type="CanvasLayer" visible=false]
+    [node name="CombatPanel" type="PanelContainer"]
+        anchor_left = 0.0
+        anchor_top = 0.0
+        anchor_right = 1.0
+        anchor_bottom = 1.0
+        margin_left = 0
+        margin_top = 0
+        margin_right = 0
+        margin_bottom = 0
+        [node name="HBContainer" type="HBoxContainer"]
+            [node name="PlayerSide" type="Node2D"]
+                name = "PlayerSide"
+            [node name="EnemySide" type="Node2D"]
+                name = "EnemySide"
+            [node name="ActionPanel" type="PanelContainer"]
+                [node name="ActionVBox" type="VBoxContainer"]
+                    [node name="ActionLabel" type="Label"]
+                        name = "ActionLabel"
+                        text = "Select Action"
+                    [node name="ExploitGrid" type="GridContainer"]
+                        name = "ExploitGrid"
+                        columns = 3
+                        [node name="ExploitButton1" type="Button"]
+                            name = "ExploitButton1"
+                            text = "Exploit 1"
+                        [node name="ExploitButton2" type="Button"]
+                            name = "ExploitButton2"
+                            text = "Exploit 2"
+                        [node name="ExploitButton3" type="Button"]
+                            name = "ExploitButton3"
+                            text = "Exploit 3"
+                        [node name="ExploitButton4" type="Button"]
+                            name = "ExploitButton4"
+                            text = "Exploit 4"
+                        [node name="ExploitButton5" type="Button"]
+                            name = "ExploitButton5"
+                            text = "Exploit 5"
+                        [node name="ExploitButton6" type="Button"]
+                            name = "ExploitButton6"
+                            text = "Exploit 6"
+                    [node name="BattleLog" type="TextEdit"]
+                        name = "BattleLog"
+                        readonly = true
+                        wrap_enabled = true
+                    [node name="ControlHBox" type="HBoxContainer"]
+                        [node name="MoveButton" type="Button"]
+                            name = "MoveButton"
+                            text = "Move"
+                        [node name="ScanButton" type="Button"]
+                            name = "ScanButton"
+                            text = "Scan"
+                        [node name="OverclockButton" type="Button"]
+                            name = "OverclockButton"
+                            text = "Overclock"
+                        [node name="DefendButton" type="Button"]
+                            name = "DefendButton"
+                            text = "Defend"
+                        [node name="EndTurnButton" type="Button"]
+                            name = "EndTurnButton"
+                            text = "End Turn"

@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://casinoterminal"]
+
+[ext_resource type="Script" uid="uid://interactable" path="res://scripts/interactable.gd" id="1_INTERACTABLE"]
+[ext_resource type="Script" uid="uid://casinoterminalscript" path="res://scripts/casino_terminal.gd" id="1_CASINOTERMINALSCRIPT"]
+[ext_resource type="PackedScene" uid="uid://button" path="res://addons/godot-js-components/button.tscn" id="1_BUTTON"]  // Using standard Godot button for now
+
+[node name="CasinoTerminal" type="Area2D"]
+    script = ExtResource("1_CASINOTERMINALSCRIPT")
+
+    [node name="Interaction" type="Interactable"]
+        name = "Interaction"
+        interaction_radius = 35
+        interaction_text = "Gamble"
+
+    [node name="TerminalSprite" type="Sprite2D"]
+        name = "TerminalSprite"
+        texture = "res://assets/sprites/tileset.png"  // Placeholder - should be casino terminal sprite
+        region_enabled = true
+        region_rect = Rect2(128, 64, 32, 32)  // Assuming a tile in the tileset
+        scale = Vector2(1.5, 1.5)
+
+    [node name="CollisionShape2D" type="CollisionShape2D"]
+        name = "InteractionCollision"
+        shape = CircleShape2D
+        radius = 35
+
+    [node name="UICasinoPanel" type="CanvasLayer"]
+        name = "UICasinoPanel"
+        visible = false
+        [node name="PanelContainer" type="PanelContainer"]
+            anchor_left = 0.5
+            anchor_top = 0.5
+            margin_left = -180
+            margin_top = -120
+            anchor_right = 0.5
+            anchor_bottom = 0.5
+            [node name="VBoxContainer" type="VBoxContainer"]
+                [node name="TitleLabel" type="Label"]
+                    name = "TitleLabel"
+                    text = "CYBER-CASINO TERMINAL"
+                    align = 2
+                    custom_minimum_size = Vector2(300, 40)
+                [node name="CoinTypeLabel" type="Label"]
+                    name = "CoinTypeLabel"
+                    align = 2
+                [node name="BetAmountLabel" type="Label"]
+                    name = "BetAmountLabel"
+                    align = 2
+                [node name="HBoxContainer" type="HBoxContainer"]
+                    [node name="SECBetButton" type="Button"]
+                        name = "SECBetButton"
+                        text = "SEC"
+                        custom_minimum_size = Vector2(60, 30)
+                    [node name="DOGEBetButton" type="Button"]
+                        name = "DOGEBetButton"
+                        text = "DOGE"
+                        custom_minimum_size = Vector2(60, 30)
+                    [node name="ANMBetButton" type="Button"]
+                        name = "ANMBetButton"
+                        text = "ANM"
+                        custom_minimum_size = Vector2(60, 30)
+                [node name="HBoxContainer2" type="HBoxContainer"]
+                    [node name="BetLessButton" type="Button"]
+                        name = "BetLessButton"
+                        text = "<"
+                        custom_minimum_size = Vector2(40, 30)
+                    [node name="BetAmountDisplay" type="Label"]
+                        name = "BetAmountDisplay"
+                        align = 2
+                        custom_minimum_size = Vector2(60, 30)
+                    [node name="BetMoreButton" type="Button"]
+                        name = "BetMoreButton"
+                        text = ">"
+                        custom_minimum_size = Vector2(40, 30)
+                [node name="HackButton" type="Button"]
+                    name = "HackButton"
+                    text = "HACK THE ODDS"
+                    custom_minimum_size = Vector2(120, 40)
+                [node name="ResultLabel" type="Label"]
+                    name = "ResultLabel"
+                    align = 2
+                    custom_minimum_size = Vector2(300, 30)

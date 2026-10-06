@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://playerxx"]
+
+[ext_resource type="Script" uid="uid://playergd" path="res://scenes/player.gd" id="1_PLAYERSCRIPT"]
+
+[node name="Player" type="CharacterBody2D" unique_id=111111111]
+script = ExtResource("1_PLAYERSCRIPT")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=222222222]
+    texture = "res://assets/sprites/player.png"  // Placeholder - replace with actual sprite
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D" unique_id=333333333]
+    shape = RectangleShape2D
+    size = Vector2(32, 32)  // Adjust based on sprite size

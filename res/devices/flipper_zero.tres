@@ -1,0 +1,109 @@
+[gd_resource type="HackingDevice" load_steps=2 format=3 uid="uid://flipperzero"]
+
+ext_resource "res://scripts/exploit.gd" as Exploit
+
+# Device Stats from GDD - Flipper Zero (Starter Device)
+device_name = "Flipper Zero"
+specialty = "Undefined"  # Starter device, can learn various things
+
+processing_speed = 12
+bandwidth_capacity = 80
+exploit_success_rate = 65
+signal_strength = 1
+durability = 8
+level = 1
+
+# Exploits (Abilities) - Flipper Zero move pool from GDD
+exploits = [
+    SubResource(1),  # Signal Spoof
+    SubResource(2),  # Deauth Attack
+    SubResource(3),  # Payload Inject
+    SubResource(4),  # Sniff Traffic
+    SubResource(5),  # Clone Badge
+]
+
+[sub_resource type="Exploit" id=1]
+name = "Signal Spoof"
+description = "Attempt to bypass one node's authentication"
+bw_cost = 15
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 70  # Exploit Success roll
+range = 1
+area_of_effect = []
+cooldown = 0
+effect_type = "buff"  # Temporary bypass
+effect_value = 1.0
+effect_duration = 3  # 3-turn duration mentioned in GDD
+is_passive = false
+
+[sub_resource type="Exploit" id=2]
+name = "Deauth Attack"
+description = "Stun enemy device for 1 turn"
+bw_cost = 20
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 80
+range = 1
+area_of_effect = [
+    Vector2i(0, -1),  # Up
+    Vector2i(0, 1),   # Down
+    Vector2i(-1, 0),  # Left
+    Vector2i(1, 0)    # Right
+]
+cooldown = 2
+effect_type = "stun"
+effect_value = 1.0
+effect_duration = 1
+
+[sub_resource type="Exploit" id=3]
+name = "Payload Inject"
+description = "Deal direct 'data breach' damage to target node"
+bw_cost = 25
+exploit_chiyet_cost = 0
+power = 15
+accuracy = 75
+range = 1
+area_of_effect = []
+cooldown = 0
+effect_type = "damage"
+effect_value = 15.0
+effect_duration = 0
+
+[sub_resource type="Exploit" id=4]
+name = "Sniff Traffic"
+description = "Reveal enemy ability cooldowns when adjacent"
+bw_cost = 0
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 100
+range = 1
+area_of_effect = [
+    Vector2i(0, -1),  # Up
+    Vector2i(0, 1),   # Down
+    Vector2i(-1, 0),  # Left
+    Vector2i(1, 0),   # Right
+    Vector2i(-1, -1), # Up-Left
+    Vector2i(-1, 1),  # Up-Right
+    Vector2i(1, -1),  # Down-Left
+    Vector2i(1, 1)    # Down-Right
+]
+cooldown = 0
+effect_type = "buff"  # Reveal cooldowns
+effect_value = 1.0
+effect_duration = 1  # Lasts until end of turn
+is_passive = true  # Passive ability
+
+[sub_resource type="Exploit" id=5]
+name = "Clone Badge"
+description = "Temporarily gain access to restricted nodes"
+bw_cost = 30
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 60
+range = 1
+area_of_effect = []
+cooldown = 4
+effect_type = "buff"  # Access restricted nodes
+effect_value = 1.0
+effect_duration = 3  # 3-turn duration

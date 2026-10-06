@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://xxxxx"]
+
+[ext_resource type="Script" uid="uid://yyyyyy" path="res://scripts/player.gd" id="1_XXXXXX"]
+[ext_resource type="PackedScene" uid="uid://zzzzzz" path="res://scenes/UI/HUD.tscn" id="1_YYYYYY"]
+[ext_resource type="PackedScene" uid="uid://aaaaaa" path="res://scenes/Battle.tscn" id="1_ZZZZZZ"]
+[ext_resource type="PackedScene" uid="uid://npchackertscn" path="res://scenes/NPC_Hacker.tscn" id="1_NPCTSCN"]
+[ext_resource type="PackedScene" uid="uid://safeterminaltscn" path="res://scenes/SafehouseTerminal.tscn" id="1_STSCN"]
+[ext_resource type="PackedScene" uid="uid://workbenchtscn" path="res://scenes/Workbench.tscn" id="1_WORKBENCH"]
+[ext_resource type="PackedScene" uid="uid://miningrigtscn" path="res://scenes/MiningRig.tscn" id="1_MININGRIG"]
+[ext_resource type="PackedScene" uid="uid://casinoterminaltscn" path="res://scenes/CasinoTerminal.tscn" id="1_CASINOTERMINAL"]
+[ext_resource type="Script" uid="uid://bbbbbb" path="res://autoload/Globals.gd" id="1_GLOBALS"]
+[ext_resource type="TileSet" path="res://assets/tilesets/cyber_tiles.tres" id="1_CYBERTILES"]
+[ext_resource type="PackedScene" path="res://scenes/DarkWebTerminal.tscn" id="1_DARKWEBTERMINAL"]
+
+[node name="Main" type="Node"]
+
+[node name="OverworldPlayer" type="CharacterBody2D" parent="." unique_id=111111111]
+script = ExtResource("1_XXXXXX")
+
+[node name="HUD" type="Control" parent="." unique_id=222222222]
+    [node name="MarginContainer" type="MarginContainer"]
+        margin_left = 10
+        margin_top = 10
+        margin_right = 10
+        margin_bottom = 10
+        [node name="VBoxContainer" type="VBoxContainer"]
+            [node name="OpSecLabel" type="Label"]
+                name = "OpSecLabel"
+                text = "OpSec: 100"
+            [node name="CredLabel" type="Label"]
+                name = "CredLabel"
+                text = "Cred: 0"
+            [node name="StaminaLabel" type="Label"]
+                name = "StaminaLabel"
+                text = "Stamina: 100/100"
+            [node name="CurrencyContainer" type="HBoxContainer"]
+                [node name="SECLabel" type="Label"]
+                    name = "SECLabel"
+                    text = "SEC: 0.0"
+                [node name="ANMLabel" type="Label"]
+                    name = "ANMLabel"
+                    text = "ANM: 0.0"
+                [node name="DOGELabel" type="Label"]
+                    name = "DOGELabel"
+                    text = "DOGE: 0.0"
+            [node name="Minimap" type="TextureRect"]
+                name = "Minimap"
+                expand = true
+                stretch_mode = 2
+
+[node name="BattleInstance" type="Node" parent="." unique_id=333333333]
+    [node name="BattleManager" type="BattleManager"]
+
+[node name="NPC_Hacker_Instance" type="Node" parent="." unique_id=555555555]
+    [node name="NPC_Hacker" type="Node"]
+        instance = ExtResource("1_NPCTSCN")
+        position = Vector2(100, 100)
+
+[node name="SafehouseTerminal_Instance" type="Node" parent="." unique_id=666666666]
+    [node name="SafehouseTerminal" type="Node"]
+        instance = ExtResource("1_STSCN")
+        position = Vector2(-100, 100)
+
+[node name="Workbench_Instance" type="Node" parent="." unique_id=777777777]
+    [node name="Workbench" type="Node"]
+        instance = ExtResource("1_WORKBENCH")
+        position = Vector2(200, 100)
+
+[node name="MiningRig_Instance" type="Node" parent="." unique_id=888888888]
+    [node name="MiningRig" type="Node"]
+        instance = ExtResource("1_MININGRIG")
+        position = Vector2(300, 100)
+
+[node name="CasinoTerminal_Instance" type="Node" parent="." unique_id=999999999]
+    [node name="CasinoTerminal" type="Node"]
+        instance = ExtResource("1_CASINOTERMINAL")
+        position = Vector2(400, 100)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tileset = ExtResource("1_CYBERTILES")
+
+[node name="DarkWebTerminal_Instance" type="Node" parent="." unique_id=1111111110]
+    [node name="DarkWebTerminal" type="Node"]
+        instance = ExtResource("1_DARKWEBTERMINAL")
+        position = Vector2(-200, -100)
+
+[node name="GameState" type="Node" parent="." unique_id=444444444]
+    script = ExtResource("1_GLOBALS")

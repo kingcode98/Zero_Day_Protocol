@@ -1,0 +1,99 @@
+[gd_resource type="HackingDevice" load_steps=2 format=3 uid="uid://wifipineapple"]
+
+ext_resource "res://scripts/exploit.gd" as Exploit
+
+# Device Stats from GDD - Wi-Fi Pineapple (Support/Control)
+device_name = "Wi-Fi Pineapple"
+specialty = "Support/Control"
+
+processing_speed = 10
+bandwidth_capacity = 90
+exploit_success_rate = 60
+signal_strength = 2  # Good range for support
+durability = 7
+level = 1
+
+# Exploits (Abilities) - Wi-Fi Pineapple move pool from GDD
+exploits = [
+    SubResource(1),  # Evil Twin
+    SubResource(2),  # Karma Attack
+    SubResource(3),  # Channel Jam
+    SubResource(4),  # Rogue AP
+    SubResource(5),  # Beacon Flood
+]
+
+[sub_resource type="Exploit" id=1]
+name = "Evil Twin"
+description = "Create fake node to lure enemies (taunt for 2 turns)"
+bw_cost = 30
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 80
+range = 2
+area_of_effect = [
+    Vector2i(0, -2), Vector2i(0, -1), Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2),
+    Vector2i(-1, -2), Vector2i(-1, -1), Vector2i(-1, 0), Vector2i(-1, 1), Vector2i(-1, 2),
+    Vector2i(1, -2), Vector2i(1, -1), Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2)
+]  # 5x5 cross pattern centered
+cooldown = 3
+effect_type = "taunt"  # Forces enemies to target this device
+effect_value = 1.0
+effect_duration = 2
+
+[sub_resource type="Exploit" id=2]
+name = "Karma Attack"
+description = "Auto-counter when enemy uses signal-based ability"
+bw_cost = 20
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 70
+range = 3  # Good range for counter
+area_of_effect = []
+cooldown = 0
+effect_type = "counter"  # Triggers when enemy uses signal-based ability
+effect_value = 1.0
+effect_duration = 0
+is_triggered = true
+trigger_condition = "enemy_uses_signal_ability"
+
+[sub_resource type="Exploit" id=3]
+name = "Channel Jam"
+description = "Reduce enemy BW regen by 50% for 2 turns"
+bw_cost = 15
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 75
+range = 2
+area_of_effect = []  # Affects all enemies in range
+cooldown = 4
+effect_type = "debuff"  # Reduces BW regen
+effect_value = 0.5  # 50% reduction
+effect_duration = 2
+
+[sub_resource type="Exploit" id=4]
+name = "Rogue AP"
+description = "Deal BW drain to all enemies in range"
+bw_cost = 25
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 70
+range = 3
+area_of_effect = []  # Affects all enemies in range
+cooldown = 3
+effect_type = "bw_drain"
+effect_value = 15.0  # Drains 15 BW
+effect_duration = 0
+
+[sub_resource type="Exploit" id=5]
+name = "Beacon Flood"
+description = "Reveal hidden enemies in large radius"
+bw_cost = 10
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 90
+range = 4  # Large radius for scanning
+area_of_effect = []  # Reveals hidden in radius
+cooldown = 2
+effect_type = "reveal"  # Reveals hidden enemies/traps
+effect_value = 1.0
+effect_duration = 1  # Lasts for enemy's next turn

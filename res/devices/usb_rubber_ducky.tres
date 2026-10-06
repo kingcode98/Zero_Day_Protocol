@@ -1,0 +1,101 @@
+[gd_resource type="HackingDevice" load_steps=2 format=3 uid="uid://usbrubberducky"]
+
+ext_resource "res://scripts/exploit.gd" as Exploit
+
+# Device Stats from GDD - USB Rubber Ducky (High Damage)
+device_name = "USB Rubber Ducky"
+specialty = "High Damage"
+
+processing_speed = 8  # Slower but high damage
+bandwidth_capacity = 75
+exploit_success_rate = 62
+signal_strength = 1
+durability = 9  # Surprisingly durable for its size
+level = 1
+
+# Exploits (Abilities) - USB Rubber Ducky move pool from GDD
+exploits = [
+    SubResource(1),  # Payload Delivery
+    SubResource(2),  # Keystroke Inject
+    SubResource(3),  # Mouse Jack
+    SubResource(4),  # Hotplug Attack
+    SubResource(5),  # Self-Destruct
+]
+
+[sub_resource type="Exploit" id=1]
+name = "Payload Delivery"
+description = "High damage, chance to infect (spreads to adjacent)"
+bw_cost = 30
+exploit_chiyet_cost = 0
+power = 20
+accuracy = 75
+range = 1
+area_of_effect = [
+    Vector2i(0, -1),  # Up
+    Vector2i(0, 1),   # Down
+    Vector2i(-1, 0),  # Left
+    Vector2i(1, 0)    # Right
+]  # Can spread to adjacent nodes
+cooldown = 0
+effect_type = "damage"
+effect_value = 20.0
+effect_duration = 0
+# Note: Infect/spread mechanic would need additional game logic
+
+[sub_resource type="Exploit" id=2]
+name = "Keystroke Inject"
+description = "Stun + deal damage over time"
+bw_cost = 20
+exploit_chiyet_cost = 0
+power = 8
+accuracy = 80
+range = 1
+area_of_effect = []
+cooldown = 0
+effect_type = "damage_over_time"  # Stun + DoT
+effect_value = 8.0
+effect_duration = 3  # Damage over 3 turns
+# Note: Would need DoT game logic
+
+[sub_resource type="Exploit" id=3]
+name = "Mouse Jack"
+description = "Disable enemy movement for 2 turns"
+bw_cost = 15
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 85
+range = 1
+area_of_effect = []
+cooldown = 2
+effect_type = "movement_disable"  # Disable movement
+effect_value = 1.0
+effect_duration = 2
+
+[sub_resource type="Exploit" id=4]
+name = "Hotplug Attack"
+description = "Bypass one layer of defense"
+bw_cost = 25
+exploit_chiyet_cost = 0
+power = 0
+accuracy = 70
+range = 1
+area_of_effect = []
+cooldown = 3
+effect_type = "buff"  # Bypass defense
+effect_value = 1.0
+effect_duration = 2  # Bypass one layer
+
+[sub_resource type="Exploit" id=5]
+name = "Self-Destruct"
+description = "Massive damage to all nodes (device destroyed)"
+bw_cost = 50
+exploit_chiyet_cost = 3  # Very high cost
+power = 50
+accuracy = 90
+range = 3  # Large radius
+area_of_effect = []  # Affects all in range
+cooldown = 0
+effect_type = "damage"
+effect_value = 50.0
+effect_duration = 0
+# Note: Would destroy this device after use

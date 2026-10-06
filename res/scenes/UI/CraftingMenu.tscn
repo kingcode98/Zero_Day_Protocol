@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://craftmenu"]
+
+[ext_resource type="Script" uid="uid://craftscript" path="res://scripts/crafting_menu.gd" id="1_CRAFTSCRIPT"]
+
+[node name="CraftingMenu" type="CanvasLayer"]
+    visible = false
+    [node name="PanelContainer" type="PanelContainer"]
+        anchor_left = 0.5
+        anchor_top = 0.5
+        margin_left = -200
+        margin_top = -150
+        anchor_right = 0.5
+        anchor_bottom = 0.5
+        [node name="VBoxContainer" type="VBoxContainer"]
+            [node name="TitleLabel" type="Label"]
+                name = "TitleLabel"
+                text = "CRAFTING WORKBENCH"
+                align = 2
+                custom_minimum_size = Vector2(300, 40)
+            [node name="DeviceInfoLabel" type="Label"]
+                name = "DeviceInfoLabel"
+                align = 2
+            [node name="MaterialsLabel" type="Label"]
+                name = "MaterialsLabel"
+                align = 2
+            [node name="UpgradeOptions" type="VBoxContainer"]
+                name = "UpgradeOptions"
+                [node name="Spacer" type="Spacer"]
+            [node name="HBoxContainer" type="HBoxContainer"]
+                [node name="CloseButton" type="Button"]
+                    name = "CloseButton"
+                    text = "Close"
+                    custom_minimum_size = Vector2(80, 30)
+                    anchor_right = 1.0
+                    anchor_bottom = 1.0
+                    margin_left = -80
+                    margin_bottom = -30

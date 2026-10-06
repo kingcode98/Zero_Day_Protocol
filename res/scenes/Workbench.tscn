@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://workbench"]
+
+[ext_resource type="Script" uid="uid://interactable" path="res://scripts/interactable.gd" id="1_INTERACTABLE"]
+[ext_resource type="Script" uid="uid://workbenchscript" path="res://scripts/workbench.gd" id="1_WORKBENCHSCRIPT"]
+[ext_resource type="PackedScene" uid="uid://craftmenuscene" path="res://scenes/UI/CraftingMenu.tscn" id="1_CRAFTMENU"]
+
+[node name="Workbench" type="Area2D"]
+    script = ExtResource("1_WORKBENCHSCRIPT")
+
+    [node name="Interaction" type="Interactable"]
+        name = "Interaction"
+        interaction_radius = 40
+        interaction_text = "Craft"
+
+    [node name="Sprite2D" type="Sprite2D"]
+        name = "WorkbenchSprite"
+        texture = "res://assets/sprites/tileset.png"  // Placeholder - should be workbench sprite
+        region_enabled = true
+        region_rect = Rect2(96, 0, 32, 32)  // Assuming a tile in the tileset
+        scale = Vector2(2.0, 2.0)
+
+    [node name="CollisionShape2D" type="CollisionShape2D"]
+        name = "InteractionCollision"
+        shape = CircleShape2D
+        radius = 40
+
+    [node name="CraftingMenuInstance" type="Node"]
+        name = "CraftingMenu"
+        instance = ExtResource("1_CRAFTMENU")

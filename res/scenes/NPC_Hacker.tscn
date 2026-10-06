@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://npchacker"]
+
+[ext_resource type="Script" uid="uid://interactable" path="res://scripts/interactable.gd" id="1_INTERACTABLE"]
+[ext_resource type="Script" uid="uid://npchackerscript" path="res://scripts/npc_hacker.gd" id="1_NPCSCRIPT"]
+[ext_resource type="PackedScene" uid="uid://wifipinetres" path="res://devices/wi_fi_pineapple.tres" id="1_WIFIPINE"]
+
+[node name="NPC_Hacker" type="Area2D"]
+    script = ExtResource("1_NPCSCRIPT")
+
+    [node name="Interaction" type="Interactable"]
+        name = "Interaction"
+        interaction_radius = 40
+        interaction_text = "Hack"
+
+    [node name="Sprite2D" type="Sprite2D"]
+        name = "Sprite"
+        texture = "res://assets/sprites/enemy.png"  # Using enemy sprite for NPC
+        scale = Vector2(1.5, 1.5)  # Make it slightly larger
+        offset = Vector2(0, -10)  # Adjust so it stands on ground
+
+    [node name="CollisionShape2D" type="CollisionShape2D"]
+        name = "InteractionCollision"
+        shape = CircleShape2D
+        radius = 40
